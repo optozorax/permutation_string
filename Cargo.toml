@@ -1,0 +1,10 @@
+[package]
+name = "permutation_string"
+version = "0.1.0"
+authors = ["ilya sheprut <optozorax@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+lazy_static = "1.4.0"
+num-bigint = "0.3.1"
+thiserror = "1.0.22"
