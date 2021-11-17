@@ -57,6 +57,15 @@ pub enum PermutationError {
     NotPermutationArray { index: usize, element: usize },
 }
 
+impl PermutationInt {
+    pub fn new(number: u64, permutation_size: usize) -> Self {
+        PermutationInt {
+            int: BigUint::from(number),
+            permutation_size,
+        }
+    }
+}
+
 impl TryFrom<PermutationString> for PermutationInt {
     type Error = PermutationError;
 
@@ -68,7 +77,7 @@ impl TryFrom<PermutationString> for PermutationInt {
                 RADIX64_CHARS_INVERT
                     .get(&x)
                     .cloned()
-                    .ok_or_else(|| PermutationError::WrongSymbol(x))
+                    .ok_or(PermutationError::WrongSymbol(x))
             })
             .collect::<Result<Vec<usize>, _>>()?
             .into_iter()
